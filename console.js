@@ -62,9 +62,9 @@ returnBeforeChris(names, 'Chris')
 
 // 10. Return "true" if the names array contains "Chris" and "false" if it does not (hint: it should be false now)
 const containsChris = names.includes('Chris')
-console.log(containsChris)
+// console.log(containsChris)
 
-console.log(names)
+// console.log(names)
 
 // INTERMEDIATE CHALLENGES (unless otherwise stated, use the peeps array in all challenge points)
 const peeps = [
@@ -107,23 +107,94 @@ const peeps = [
 ]
 
 // 1. Add a boolean property "isAwesome" for each peep and set it to "true" if the person has at least 3 favorite numbers (or false if not).
+for (let i = 0; i < peeps.length; i++) {
+	if (peeps[i].favoriteNumbers.length >= 3) {
+		peeps[i]['isAwesome'] = true
+	}
+}
 
 // 2. Return a new array called "youngPeeps" with peeps 25 or younger.
+const youngPeeps = []
+for (let i = 0; i < peeps.length; i++) {
+	if (peeps[i].age <= 25) {
+		youngPeeps.push(peeps[i])
+	}
+}
+// console.log(youngPeeps)
 
 // 3. Sort the favoriteNumbers property from least to greatest for each peep in the peeps array
+// for (let i = 0; i < peeps.length; i++) {
+// 	peeps[i].favoriteNumbers.sort(function (a, b) {
+// 		return a - b
+// 	})
+// }
+// console.log(peeps)
 
 // 4. Return "true" if every person has an age below 50 and "false" if not.
+// const isEveryoneBelow50 = peeps.every(person => person.age < 50)
+// console.log(isEveryoneBelow50)
 
 // 5. Create a function called "findPeep" that returns the peep for an ID passed in and returns "not found" if the peep does not exist. Call it for an id that exists and one that does not.
+// const findPeep = personId => {
+// 	let searchStatus = false
+// 	for (let i = 0; i < peeps.length; i++) {
+// 		if (peeps[i].id === personId) return peeps[i]
+// 		else searchStatus = false
+// 	}
+// 	return searchStatus
+// }
+// const personExists = findPeep(131)
+// personExists ? console.log(personExists) : console.log('Not Found')
 
 // 6. Create a new array called "reversedPeeps" with the peeps array order reversed
+const reversedPeeps = []
+for (let i = peeps.length - 1; i >= 0; i--) {
+	reversedPeeps.push(peeps[i])
+}
+// console.log(reversedPeeps)
 
 // 7. Add an additional property on each peep object called favoriteNumbersSum with a single number value which equals the total of all their favorite numbers.
+// for (let i = 0; i < peeps.length; i++) {
+// 	const sum = peeps[i].favoriteNumbers.reduce((a, b) => {
+// 		return a + b
+// 	}, 0)
+// 	peeps[i]['favoriteNumbersSum'] = sum
+// }
+// console.log(peeps)
 
 // 8. Create a new array called "numberOnePeeps" with all people that include a favorite number of "1". Include only their names and ids in the new array.
+const numberOnePeeps = []
+for (let i = 0; i < peeps.length; i++) {
+	if (peeps[i].favoriteNumbers.includes(1)) {
+		numberOnePeeps.push({ id: peeps[i].id, name: peeps[i].name })
+	}
+}
+// console.log(numberOnePeeps)
 
 // 9. Combine all peeps from the numberOnePeeps (#8 above) which are also in the youngPeeps (#2 above) array into a new array called "freshPeeps". Include peeps with unique ids only from the youngPeeps array.
+const freshPeeps = []
+const numberOnePeepsName = numberOnePeeps.map(people => people.name)
+for (let i = 0; i < youngPeeps.length; i++) {
+	if (numberOnePeepsName.includes(youngPeeps[i].name)) freshPeeps.push(youngPeeps[i])
+}
+// console.log(freshPeeps)
 
 // 10. Return a single value representing the total of all favoriteNumbers for anyone with the isAwesome property set to "true" (HINT: should be 159).
-
-// console.table(peeps)
+const getRequiredPeople = []
+for (let i = 0; i < peeps.length; i++) {
+	if (peeps[i].isAwesome === true) {
+		getRequiredPeople.push(peeps[i])
+	}
+}
+let sumArray = []
+// console.log(getRequiredPeople)
+for (let i = 0; i < getRequiredPeople.length; i++) {
+	sumArray.push(getRequiredPeople[i].favoriteNumbers)
+}
+let flattenedSumArray = sumArray.reduce(function (prev, curr) {
+	return prev.concat(curr)
+})
+let sum = flattenedSumArray.reduce((a, b) => {
+	return a + b
+}, 0)
+console.log(sum)
