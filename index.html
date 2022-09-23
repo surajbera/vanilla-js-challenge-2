@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Challenges</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      font-family: 'Noto Serif', serif;
+    }
+
+    .code {
+      margin: 0;
+      background-color: #e2e8f0;
+    }
+
+    code {
+      word-wrap: break-word;
+      font-family: monospace;
+      text-align: left
+    }
+  </style>
+</head>
+
+<body>
+  <script src="console.js"></script>
+
+  <h2>shift(), unshift(), sort()</h2>
+  <ul>
+    <li>Mutates the original array</li>
+  </ul>
+
+  <h2>slice()</h2>
+  <ul>
+    <li>Does not mutate and returns a new array</li>
+  </ul>
+
+  <h2>splice()</h2>
+  <ul>
+    <li>Mutates the original array</li>
+    <li>Return value and mutated value is different</li>
+    <li>
+      <p>splice() is basically known for <b>deleting</b> array elements</p>
+      <ul>
+        <li>Deleted elements are returned in an array</li>
+        <li>Original array does not contain the deleted elements</li>
+      </ul>
+    </li>
+    <li>
+      <pre class="code">
+        <code>
+          const someName = ['suraj', 'suresh', 'soumen']
+          someName.splice(0, someName.indexOf('soumen'))
+        </code>
+      </pre>
+    </li>
+  </ul>
+</body>
+
+</html>
